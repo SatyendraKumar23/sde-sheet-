@@ -1,0 +1,40 @@
+class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+
+        List<List<Integer>>ans=new ArrayList<>();
+
+        List<Integer>ll=new ArrayList<>();
+
+        Arrays.sort(nums);
+
+        findsubsets(nums,0,ans,ll);
+
+        return ans;
+        
+    }
+
+    public static void findsubsets(int nums[],int idx,List<List<Integer>>ans,List<Integer>ll)
+    {
+            ans.add(new ArrayList<>(ll));
+        
+
+        for(int i=idx;i<nums.length;i++)
+        {
+            if(i>idx&&nums[i]==nums[i-1])
+            {
+                continue;
+            }
+            else{
+
+            ll.add(nums[i]);
+
+            findsubsets(nums,i+1,ans,ll);
+
+            ll.remove(ll.size()-1);
+            }
+
+
+            
+        }
+    }
+}
