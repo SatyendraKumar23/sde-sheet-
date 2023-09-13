@@ -1,0 +1,21 @@
+class Solution{
+     ArrayList<Integer> subSum=new ArrayList<>();
+     
+     
+    ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int N){
+        // code here
+        sumFinder(arr,0,0,N);
+        return subSum;
+    }
+    public void sumFinder(ArrayList<Integer> ar,int ind,int sum,int N ){
+        if(ind==N){
+            subSum.add(sum);// when you reach the last index, add the sum to the arraylist
+        }else{
+        
+        sumFinder(ar,ind+1,sum+ar.get(ind),N);//take condition
+        
+        sumFinder(ar,ind+1,sum,N);// do not take condition
+        }
+        
+    }
+}
